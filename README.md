@@ -9,4 +9,6 @@ A simple example discord bot written in go using the [disgord](https://github.co
 
 > 3. Having the disgord library, In the terminal: `$ go get github.com/andersfylling/disgord`
 
-> 3. run the main file, In the terminal: `$ go run main.go`
+> 4. Configure the config.json file `Prefix, Bot_ID, Bot_Token`
+
+> 5. run the main file, In the terminal: `$ go run main.go`

@@ -90,7 +90,7 @@ func MessageCreate(discord disgord.Session, m *disgord.MessageCreate){
     
       
         BotID := disgord.Snowflake(ID) //Convert bot ID to snowflake
-        //BotID int
+        //BotID int64
         
         BotUser, err := Client.GetUser(context.Background(), BotID, disgord.IgnoreCache) //Getting the bot as a user
         if err != nil{
@@ -147,8 +147,8 @@ func MessageCreate(discord disgord.Session, m *disgord.MessageCreate){
 				Inline: true,
 				},
 				{ //field 2
-					Name: "field2 value 1",
-					Value: "field2 value 2",
+				Name: "field2 value 1",
+				Value: "field2 value 2",
 			
 				},
 			},
@@ -173,6 +173,63 @@ func MessageCreate(discord disgord.Session, m *disgord.MessageCreate){
             /* If there were no arguments to send */
             message.Reply(context.Background(), discord, "There are no arguments to send")
         }
+    }
+
+    if command == "avatar"{
+        /* Getting the mention */
+
+        MentionUser := message.Mentions
+        /*MentionUser*[]User
+        *Returns array of users mentioned
+        */
+
+        /* Message author avatar */
+        AvatarAuthor, err := message.Author.AvatarURL(2048, true)
+        if err != nil{
+            log.Print(err)
+            return
+        }
+
+
+        if len(MentionUser) < 1 {
+            /* If the length of the mention is less than 1, return the avatar of the author of the message */
+            message.Reply(context.Background(), discord, &disgord.CreateMessageParams{
+                Embed: &disgord.Embed{ //embed
+                    Title: "Avatar of "+ message.Author.Tag(), //Embed title
+                    Color: 0xe9e9e9, //Embed Color
+                    Image: &disgord.EmbedImage{ //Embed Image
+                        URL: AvatarAuthor, //URL of the image in this case the avatar
+                    },
+                    Author: &disgord.EmbedAuthor{ //Embed AUthor
+                        Name: message.Author.Tag(), //Text of embed Author (tag of author message)
+                        IconURL: AvatarAuthor, //Icon of author
+                    },
+                },
+            })
+        }else{
+            /* If there were 1 or more mentions */
+
+            AvatarMention, err := MentionUser[0].AvatarURL(2048, true)
+            if err != nil{
+                log.Print(err)
+                return
+            }
+            /* Obtains the avatar of the first user mentioned */
+            message.Reply(context.Background(), discord, &disgord.CreateMessageParams{
+                Embed: &disgord.Embed{ //Embed
+                    Title: "Avatar of "+ MentionUser[0].Tag(), //Embed Title
+                    Color: 0xe9e9e9, //Embed Color
+                    Image: &disgord.EmbedImage{ //EmbedImage
+                        URL: AvatarMention, //URL of the image in this case the avatar of the first user mentioned
+                    },
+                    Author: &disgord.EmbedAuthor{ //Embed AUthor
+                        Name: message.Author.Tag(), //Text of embed Author (tag of author message)
+                        IconURL: AvatarAuthor, //Icon of author
+                    },
+                },
+            })
+        }
+      
     }
 }
 
