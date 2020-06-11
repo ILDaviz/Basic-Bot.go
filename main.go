@@ -150,11 +150,11 @@ func MessageCreate(discord disgord.Session, m *disgord.MessageCreate){
 				Name: "field2 value 1",
 				Value: "field2 value 2",
 			
-				},
-			},
-		},
-	  })
-    }
+                },
+            },
+        },
+    })
+  }
     
     if command == "say"{ //if the command is say
         if len(args) > 1{ //if args[1]
@@ -229,7 +229,6 @@ func MessageCreate(discord disgord.Session, m *disgord.MessageCreate){
                 },
             })
         }
-      
     }
 }
 
