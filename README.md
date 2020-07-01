@@ -1,4 +1,4 @@
-# Simple Bot.go
+# Basic bot.go
 
 A simple example discord bot written in go using the [disgord](https://github.com/andersfylling/disgord) library.
 
@@ -6,6 +6,7 @@ A simple example discord bot written in go using the [disgord](https://github.co
 
 - Have [Go](https://golang.org/) installed on your PC
 - Having the disgord Library, in the terminal: `$ go get github.com/andersfylling/disgord`
+- Have knowledge about the [Go](https://golang.org/) language and its [packages](https://golang.org/pkg/)
 
 
 ### Installation
@@ -28,7 +29,7 @@ Fill the `config.json` file with the following template:
 }
 ```
 - Prefix: The bot prefix
-- Bot_ID: The bot id
+- Bot_ID: The bot id (Optional)
 - Bot_Token: the Token of the bot that is obtained in the Discord [Developers](https://discordapp.com/developers/applications) page
 
 ### Commands
@@ -41,7 +42,7 @@ Fill the `config.json` file with the following template:
 > | **```avatar```** | The bot embeds the avatar of the author of the message or the mentioned one | 
 > | **```kick```** | The bot kicks the mentioned user |
 > | **```ban```** | The bot ban the mentioned user |
-
+> | **```clear```**| Deletes a certain amount of messages on the channel in the range of `1 - 100` |
 ### Support
 
 If you don't know GO I do not recommend using this and I will not provide support for that.
