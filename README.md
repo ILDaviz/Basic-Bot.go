@@ -39,6 +39,8 @@ Fill the `config.json` file with the following template:
 > | **```embed```** | The bot sends an example of an embed | 
 > | **```say```** | The bot sends what you say | 
 > | **```avatar```** | The bot embeds the avatar of the author of the message or the mentioned one | 
+> | **```kick```** | The bot kicks the mentioned user |
+> | **```ban```** | The bot ban the mentioned user |
 
 ### Support
 
