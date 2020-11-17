@@ -42,6 +42,7 @@ Fill the `config.json` file with the following template:
 > | **```ban```** | The bot ban the mentioned user | Ban Members
 > | **```clear```**| Deletes a certain amount of messages on the channel in the range of `1 - 100` | Manage Messages
 > | **```setprefix```**| Update the server prefix | Manage Guild
+> | **```help```**| Displays the list of commands or information for a specific command | NP
 > NP = No permission required
 ### Support
 

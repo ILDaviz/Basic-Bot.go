@@ -3,15 +3,13 @@ package main //package main (main file)
 import (
 	"Bot/commands"
 	"Bot/config"
-	"context" //package context
-	"log"     //package log
-
+	"context"                                       //package context
 	"github.com/Necroforger/dgrouter/disgordrouter" //command router framework
 	"github.com/andersfylling/disgord"              //lib disgord
+	"log"                                           //package log
 )
 
 func main() {
-
 	client := disgord.New(disgord.Config{
 		ProjectName: "Basic bot.go",
 		BotToken:    config.Token, //Get Token From config.json

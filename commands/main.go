@@ -15,7 +15,8 @@ type Command struct {
 	Run         disgordrouter.HandlerFunc
 }
 
-var Commands []*Command
+var Commands map[string]*Command = make(map[string]*Command)
+
 var BotUser *disgord.User
 
 func NewRouter(client *disgord.Client, router *disgordrouter.Route) {
@@ -41,20 +42,18 @@ func NewCommand(name string, description string, category string, handler disgor
 		Category:    category,
 		Run:         handler,
 	}
-	Commands = append(Commands, command)
+	Commands[name] = command
+
 	return command
 }
 
 func getPrefix(id disgord.Snowflake) string {
-	var data string
-	db := database.GetConnection()
 
-	err := db.QueryRow("SELECT prefix FROM settings WHERE GuildId = ?", id).Scan(&data)
-
-	if err != nil {
-		_ = database.Run("INSERT INTO settings (GuildId, Prefix) VALUES(?,?)", id, config.Prefix)
-		data = config.Prefix
+	if data, err := database.Get("SELECT prefix FROM settings WHERE GuildId = ?", id); err == nil {
+		return data.(string)
 	}
 
-	return data
+	_ = database.Run("INSERT INTO settings (GuildId, Prefix) VALUES(?,?)", id, config.Prefix)
+
+	return config.Prefix
 }
