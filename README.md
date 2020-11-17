@@ -50,7 +50,7 @@ Fill the `config.json` file with the following template:
 If you don't know GO I do not recommend using this and I will not provide support for that.
 
 ### Tasks to do
-- ~~Sort the main file (divide it into several files)~~
+- ~~Sort the main file (divide it into several files)~~ 28/July/2020
 - Basic command handler (possibly with framework)
 
 ### Author
