@@ -6,8 +6,8 @@ import (
 	"context" //package context
 	"log"     //package log
 
-	"github.com/Necroforger/dgrouter/disgordrouter"
-	"github.com/andersfylling/disgord" //lib disgord
+	"github.com/Necroforger/dgrouter/disgordrouter" //command router framework
+	"github.com/andersfylling/disgord"              //lib disgord
 )
 
 func main() {

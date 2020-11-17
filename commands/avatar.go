@@ -22,16 +22,14 @@ func avatarCommand(ctx *disgordrouter.Context) {
 			SetImage(mAvatar).
 			SetAuthor(mention[0].Username, mAvatar)
 
-		_, _ = ctx.Ses.CreateMessage(context.Background(), ctx.Msg.ChannelID, avatarEmbed.ToMessage())
-
 	} else {
 		/* If there was no mention send that of the author */
 		avatarEmbed.
 			SetImage(avatarAuthor)
 
-		_, _ = ctx.Ses.CreateMessage(context.Background(), ctx.Msg.ChannelID, avatarEmbed.ToMessage())
 	}
 
+	_, _ = ctx.Ses.CreateMessage(context.Background(), ctx.Msg.ChannelID, avatarEmbed.ToMessage())
 }
 
 func init() {
