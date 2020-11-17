@@ -36,5 +36,5 @@ func setPrefixCommand(ctx *disgordrouter.Context) {
 }
 
 func init() {
-	NewCommand("setprefix", "Set the custom prefix", "Administration", setPrefixCommand)
+	NewCommand("setprefix", "Set custom server prefix", "Administration", setPrefixCommand)
 }

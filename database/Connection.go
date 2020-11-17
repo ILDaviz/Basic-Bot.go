@@ -24,6 +24,7 @@ func GetConnection() *sql.DB { //Connection to the database
 	return db //We return the connection
 }
 
+/* If you don't understand why this method, see -> https://golang.org/doc/effective_go.html#init */
 func init() {
 	db = GetConnection() //Connection to the database
 

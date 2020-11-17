@@ -23,10 +23,10 @@ func embedCommand(ctx *disgordrouter.Context) {
 		AddField("Field name 3", "Field value 3", true).
 		AddField("Field name 4", "Field value 4", true).
 		AddField("Field name no inline", "Field value no inline", false)
-
+	/* Method ".ToMessage()" converts the embed struct to an embed parameters suitable for sending it without any error */
 	_, _ = ctx.Ses.CreateMessage(context.Background(), ctx.Msg.ChannelID, embed.ToMessage())
 }
 
 func init() {
-	NewCommand("embed", "Show a embed!", "General", embedCommand)
+	NewCommand("embed", "Show an example embed!", "General", embedCommand)
 }

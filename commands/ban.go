@@ -49,5 +49,5 @@ func banCommand(ctx *disgordrouter.Context) {
 }
 
 func init() {
-	NewCommand("ban", "Ban a member", "Moderation", banCommand)
+	NewCommand("ban", "Ban a member from the server", "Moderation", banCommand)
 }

@@ -7,5 +7,5 @@ func pingCommand(ctx *disgordrouter.Context) {
 }
 
 func init() {
-	NewCommand("ping", "responds with pong", "General", pingCommand)
+	NewCommand("ping", "Respond with pong", "General", pingCommand)
 }

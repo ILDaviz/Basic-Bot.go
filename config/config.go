@@ -6,6 +6,7 @@ import (
 	"log"
 )
 
+/* global variables */
 var (
 	Prefix string
 	Token  string
@@ -28,4 +29,5 @@ func init() {
 
 	Prefix = config.Prefix
 	Token = config.Token
+	/* Before starting each variable is assigned with its proper value */
 }

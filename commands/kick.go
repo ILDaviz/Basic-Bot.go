@@ -45,5 +45,5 @@ func kickCommand(ctx *disgordrouter.Context) {
 }
 
 func init() {
-	NewCommand("kick", "Kick a member", "Moderation", kickCommand)
+	NewCommand("kick", "Kick a member from the server", "Moderation", kickCommand)
 }

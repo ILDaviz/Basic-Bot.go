@@ -13,6 +13,7 @@ func avatarCommand(ctx *disgordrouter.Context) {
 	avatarAuthor, _ := ctx.Msg.Author.AvatarURL(2048, true)
 
 	if len(mention) > 0 {
+		/* If there was more than 1 mention, we only get the first mention */
 		mAvatar, _ := mention[0].AvatarURL(2048, true)
 
 		avatarEmbed.
@@ -24,6 +25,7 @@ func avatarCommand(ctx *disgordrouter.Context) {
 		_, _ = ctx.Ses.CreateMessage(context.Background(), ctx.Msg.ChannelID, avatarEmbed.ToMessage())
 
 	} else {
+		/* If there was no mention send that of the author */
 		avatarEmbed.
 			SetImage(avatarAuthor)
 
@@ -33,5 +35,5 @@ func avatarCommand(ctx *disgordrouter.Context) {
 }
 
 func init() {
-	NewCommand("avatar", "Avatar command", "General", avatarCommand)
+	NewCommand("avatar", "Show someone else's avatar or yours!", "General", avatarCommand)
 }

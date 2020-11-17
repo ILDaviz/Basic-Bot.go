@@ -7,6 +7,10 @@ import (
 
 func sayCommand(ctx *disgordrouter.Context) {
 	if ctx.Args.Get(1) != "" {
+		/*
+			<prefix>say -> Args[0]
+			<prefix>say text -> Args[1]
+		*/
 		ctx.Reply(strings.Join(ctx.Args[1:], " "))
 
 	} else {
@@ -15,5 +19,5 @@ func sayCommand(ctx *disgordrouter.Context) {
 }
 
 func init() {
-	NewCommand("say", "Reply content", "General", sayCommand)
+	NewCommand("say", "Repeat the content you put", "General", sayCommand)
 }

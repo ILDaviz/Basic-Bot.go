@@ -13,7 +13,7 @@ A simple example discord bot written in go using the [disgord](https://github.co
 
 1. Clone Repository
 2. Run in the terminal: `$ go build .` in the cloned directory
-3. Execute `Basic.bot.go.exe` (In Linux simply `$ ./Basic.bot.go`) 
+3. Execute `Bot.exe` (In Linux simply `$ ./Bot`) 
 
 > **Note:** If you don't want to compile the bot, you can run it by running in terminal: `$ go run .` in the cloned directory
 
@@ -24,13 +24,11 @@ Fill the `config.json` file with the following template:
 ```json
 {
     "Prefix":"PREFIX",
-    "Bot_ID":"BOT-ID",
-    "Bot_Token":"BOT-TOKEN"
+    "Token":"BOT-TOKEN"
 }
 ```
 - Prefix: The bot prefix
-- Bot_ID: The bot id (Optional)
-- Bot_Token: the Token of the bot that is obtained in the Discord [Developers](https://discordapp.com/developers/applications) page
+- Token: the Token of the bot that is obtained in the Discord [Developers](https://discordapp.com/developers/applications) page
 
 ### Commands
 
@@ -51,7 +49,7 @@ If you don't know GO I do not recommend using this and I will not provide suppor
 
 ### Tasks to do
 - ~~Sort the main file (divide it into several files)~~ 28/July/2020
-- Basic command handler (possibly with framework)
+- ~~Basic command handler (possibly with framework)~~ 17/November/2020
 
 ### Author
 

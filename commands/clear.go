@@ -71,5 +71,5 @@ func clearCommand(ctx *disgordrouter.Context) {
 }
 
 func init() {
-	NewCommand("clear", "Clear messages", "Moderation", clearCommand)
+	NewCommand("clear", "Delete a certain number of messages in the range of 1 to 100", "Moderation", clearCommand)
 }

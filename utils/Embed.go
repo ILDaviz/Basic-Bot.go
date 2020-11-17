@@ -6,6 +6,7 @@ import (
 	"github.com/andersfylling/disgord"
 )
 
+/*Embed as a "RichEmbed" class*/
 type messageEmbed struct {
 	*disgord.Embed
 }
@@ -119,6 +120,7 @@ func (e *messageEmbed) AddField(name string, value string, inline bool) *message
 	return e
 }
 
+/* Convert the embed as a parameter to send it */
 func (e *messageEmbed) ToMessage() *disgord.CreateMessageParams {
 	return &disgord.CreateMessageParams{Embed: e.Embed}
 }
