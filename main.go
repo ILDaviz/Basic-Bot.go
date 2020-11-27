@@ -1,12 +1,13 @@
 package main //package main (main file)
 
 import (
+	"log" // package log
+
+	"github.com/Necroforger/dgrouter/disgordrouter" // command router framework
+	"github.com/andersfylling/disgord"              // lib disgord
+
 	"Bot/commands"
 	"Bot/config"
-	"context"                                       //package context
-	"github.com/Necroforger/dgrouter/disgordrouter" //command router framework
-	"github.com/andersfylling/disgord"              //lib disgord
-	"log"                                           //package log
 )
 
 func main() {
@@ -23,18 +24,18 @@ func main() {
 	})
 
 	/* connect, and stay connected until a system interrupt takes place */
-	defer client.StayConnectedUntilInterrupted(context.Background())
+	defer client.Gateway().StayConnectedUntilInterrupted()
 
 	/* New router */
 	router := disgordrouter.New()
 
 	commands.NewRouter(client, router)
 
-	client.On(disgord.EvtReady, func() {
-		guilds, _ := client.GetGuilds(context.Background(), nil, disgord.IgnoreCache)
-		botUser, _ := client.Myself(context.Background())
+	client.Gateway().BotReady(func() {
+		guildIDs := client.GetConnectedGuilds()
+		botUser, _ := client.CurrentUser().Get()
 
 		/*Bot#0000 | Guilds: 1*/
-		log.Printf("%s | Guilds: %d", botUser.Tag(), len(guilds))
+		log.Printf("%s | Guilds: %d", botUser.Tag(), len(guildIDs))
 	})
 }

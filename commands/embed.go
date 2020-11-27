@@ -1,9 +1,9 @@
 package commands
 
 import (
-	"Bot/utils"
-	"context"
 	"github.com/Necroforger/dgrouter/disgordrouter"
+
+	"Bot/utils"
 )
 
 func embedCommand(ctx *disgordrouter.Context) {
@@ -24,7 +24,7 @@ func embedCommand(ctx *disgordrouter.Context) {
 		AddField("Field name 4", "Field value 4", true).
 		AddField("Field name no inline", "Field value no inline", false)
 	/* Method ".ToMessage()" converts the embed struct to an embed parameters suitable for sending it without any error */
-	_, _ = ctx.Ses.CreateMessage(context.Background(), ctx.Msg.ChannelID, embed.ToMessage())
+	_, _ = ctx.Ses.Channel(ctx.Msg.ChannelID).CreateMessage(embed.ToMessage())
 }
 
 func init() {

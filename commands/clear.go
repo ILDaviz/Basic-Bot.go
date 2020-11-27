@@ -1,12 +1,13 @@
 package commands
 
 import (
-	"Bot/utils"
-	"context"
 	"fmt"
+	"strconv"
+
 	"github.com/Necroforger/dgrouter/disgordrouter"
 	"github.com/andersfylling/disgord"
-	"strconv"
+
+	"Bot/utils"
 )
 
 func clearCommand(ctx *disgordrouter.Context) {
@@ -41,7 +42,7 @@ func clearCommand(ctx *disgordrouter.Context) {
 				Limit: uint(num),
 			}
 
-			MessagesAmount, err := ctx.Ses.GetMessages(context.Background(), ctx.Msg.ChannelID, Params)
+			MessagesAmount, err := ctx.Ses.Channel(ctx.Msg.ChannelID).GetMessages(Params)
 			//We get the number of Messages
 			//MessageAmount []*disgord.Message
 
@@ -58,7 +59,7 @@ func clearCommand(ctx *disgordrouter.Context) {
 				/*(Params *disgord.DeleteMessagesParams) AddMessage(msg *disgord.Message)*/
 			}
 
-			if err = ctx.Ses.DeleteMessages(context.Background(), ctx.Msg.ChannelID, deleteParams, disgord.IgnoreCache); err != nil {
+			if err = ctx.Ses.Channel(ctx.Msg.ChannelID).DeleteMessages(deleteParams); err != nil {
 				ctx.Reply(fmt.Sprintf("They cannot be removed `%d` messages\nError: `%s`", num, err))
 				return
 				//If error is different from nil it means that there was an error in deleting the indicated number of messages (usually because messages of more than 2 weeks cannot be deleted)

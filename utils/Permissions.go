@@ -1,9 +1,9 @@
 package util
 
 import (
-	"context"
-	"github.com/andersfylling/disgord"
 	"log"
+
+	"github.com/andersfylling/disgord"
 )
 
 /*--------------- List ALL Permissions -------------------*/
@@ -39,9 +39,9 @@ var (
 	MANAGE_EMOJIS         = disgord.PermissionManageEmojis
 )
 
-func HasPermission(session disgord.Session, User *disgord.User, GuildID disgord.Snowflake, Permission uint64) bool {
+func HasPermission(session disgord.Session, User *disgord.User, GuildID disgord.Snowflake, Permission disgord.PermissionBit) bool {
 
-	Member, err := session.GetMember(context.Background(), GuildID, User.ID, disgord.IgnoreCache)
+	Member, err := session.Guild(GuildID).Member(User.ID).Get(disgord.IgnoreCache)
 
 	if err != nil {
 		//If an error occurs when trying to get the user as a member we return false and the error to the console
@@ -50,7 +50,7 @@ func HasPermission(session disgord.Session, User *disgord.User, GuildID disgord.
 	}
 
 	for _, roleID := range Member.Roles {
-		guild, err := session.GetGuild(context.Background(), GuildID, disgord.IgnoreCache)
+		guild, err := session.Guild(GuildID).Get(disgord.IgnoreCache)
 		if err != nil {
 			//If an error occurs when trying to get the server we return false and the error to the console
 			log.Print(err)

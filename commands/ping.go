@@ -1,11 +1,11 @@
 package commands
 
 import (
-	"context"
 	"fmt"
-	"github.com/Necroforger/dgrouter/disgordrouter"
 	"log"
 	"time"
+
+	"github.com/Necroforger/dgrouter/disgordrouter"
 )
 
 func pingCommand(ctx *disgordrouter.Context) {
@@ -15,7 +15,7 @@ func pingCommand(ctx *disgordrouter.Context) {
 		log.Fatal(err)
 	} else {
 		took := time.Since(start)
-		ctx.Ses.SetMsgContent(context.Background(), ctx.Msg.ChannelID, msg.ID, fmt.Sprintf("Pong! `%s`", took))
+		_, _ = ctx.Ses.Channel(ctx.Msg.ChannelID).Message(msg.ID).SetContent(fmt.Sprintf("Pong! `%s`", took))
 	}
 }
 

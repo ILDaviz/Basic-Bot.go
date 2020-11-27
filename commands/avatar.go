@@ -1,10 +1,11 @@
 package commands
 
 import (
-	"Bot/utils"
-	"context"
 	"fmt"
+
 	"github.com/Necroforger/dgrouter/disgordrouter"
+
+	"Bot/utils"
 )
 
 func avatarCommand(ctx *disgordrouter.Context) {
@@ -29,7 +30,7 @@ func avatarCommand(ctx *disgordrouter.Context) {
 
 	}
 
-	_, _ = ctx.Ses.CreateMessage(context.Background(), ctx.Msg.ChannelID, avatarEmbed.ToMessage())
+	_, _ = ctx.Ses.Channel(ctx.Msg.ChannelID).CreateMessage(avatarEmbed.ToMessage())
 }
 
 func init() {

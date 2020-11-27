@@ -1,11 +1,11 @@
 package commands
 
 import (
-	"Bot/config"
-	"Bot/database"
-	"context"
 	"github.com/Necroforger/dgrouter/disgordrouter"
 	"github.com/andersfylling/disgord"
+
+	"Bot/config"
+	"Bot/database"
 )
 
 type Command struct {
@@ -24,9 +24,9 @@ func NewRouter(client *disgord.Client, router *disgordrouter.Route) {
 		router.On(cmd.Name, cmd.Run).Desc(cmd.Description).Cat(cmd.Category)
 	}
 
-	BotUser, _ = client.Myself(context.Background())
+	BotUser, _ = client.CurrentUser().Get()
 
-	client.On(disgord.EvtMessageCreate, func(session disgord.Session, m *disgord.MessageCreate) {
+	client.Gateway().MessageCreate(func(session disgord.Session, m *disgord.MessageCreate) {
 		if m.Message.IsDirectMessage() {
 			return /* Ignore DM */
 		}

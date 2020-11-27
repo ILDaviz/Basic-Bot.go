@@ -2,7 +2,6 @@ package commands
 
 import (
 	"Bot/utils"
-	"context"
 	"fmt"
 	"github.com/Necroforger/dgrouter/disgordrouter"
 	"github.com/andersfylling/disgord"
@@ -32,7 +31,7 @@ func banCommand(ctx *disgordrouter.Context) {
 
 		if ctx.Args.Get(2) != "" {
 
-			err := ctx.Ses.BanMember(context.Background(), ctx.Msg.GuildID, ctx.Msg.Mentions[0].ID, &disgord.BanMemberParams{DeleteMessageDays: 7, Reason: strings.Join(ctx.Args[2:], " ")}, disgord.IgnoreCache)
+			err := ctx.Ses.Guild(ctx.Msg.GuildID).Member(ctx.Msg.Mentions[0].ID).Ban(&disgord.BanMemberParams{DeleteMessageDays: 7, Reason: strings.Join(ctx.Args[2:], " ")}, disgord.IgnoreCache)
 
 			if err != nil {
 				ctx.Reply(fmt.Sprintf("an unexpected error occurred: `%s`", err))

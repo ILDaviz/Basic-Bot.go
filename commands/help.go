@@ -1,11 +1,12 @@
 package commands
 
 import (
-	"Bot/utils"
-	"context"
 	"fmt"
-	"github.com/Necroforger/dgrouter/disgordrouter"
 	"strings"
+
+	"github.com/Necroforger/dgrouter/disgordrouter"
+
+	"Bot/utils"
 )
 
 func helpCommand(ctx *disgordrouter.Context) {
@@ -33,7 +34,7 @@ func helpCommand(ctx *disgordrouter.Context) {
 		}
 	}
 
-	_, _ = ctx.Ses.CreateMessage(context.Background(), ctx.Msg.ChannelID, embed.ToMessage())
+	_, _ = ctx.Ses.Channel(ctx.Msg.ChannelID).CreateMessage(embed.ToMessage())
 }
 
 func getCategories() map[string][]string {

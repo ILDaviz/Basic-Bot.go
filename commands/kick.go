@@ -1,12 +1,12 @@
 package commands
 
 import (
-	"Bot/utils"
-	"context"
 	"fmt"
-	"github.com/Necroforger/dgrouter/disgordrouter"
-	"github.com/andersfylling/disgord"
 	"strings"
+
+	"github.com/Necroforger/dgrouter/disgordrouter"
+
+	"Bot/utils"
 )
 
 func kickCommand(ctx *disgordrouter.Context) {
@@ -30,7 +30,7 @@ func kickCommand(ctx *disgordrouter.Context) {
 	}
 
 	if ctx.Args.Get(2) != "" {
-		err := ctx.Ses.KickMember(context.Background(), ctx.Msg.GuildID, ctx.Msg.Mentions[0].ID, strings.Join(ctx.Args[2:], " "), disgord.IgnoreCache)
+		err := ctx.Ses.Guild(ctx.Msg.GuildID).Member(ctx.Msg.Mentions[0].ID).Kick(strings.Join(ctx.Args[2:], " "))
 
 		if err != nil {
 			ctx.Reply(fmt.Sprintf("an unexpected error occurred: `%s`", err))
